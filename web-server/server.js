@@ -3,13 +3,22 @@ const hbs = require("hbs");
 
 var app = express();
 
-app.set('view Engine','hbs');
+hbs.registerPartials(__dirname + "views/partials");
+app.set("view Engine", "hbs");
 app.use(express.static(__dirname + "/public"));
+
+
+app.use((req,res,next) =>{
+var now = new Date().toString();
+console.log(`${now}: ${req.method} ${req.url}`)
+next();
+});
+
 
 app.get("/", (req, res) => {
   res.render("home.hbs", {
-    pageTitle: 'Home page',
-    welcomeMessage: 'Welcome to my Website',
+    pageTitle: "Home page",
+    welcomeMessage: "Welcome to my Website",
     currentYear: new Date().getFullYear()
   });
 });
