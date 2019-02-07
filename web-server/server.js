@@ -71,7 +71,8 @@ app.get("/bad", (req, res) => {
 // port no. assigment starts here
 
 app.listen(port, () => {
-  console.log(`Server is up on port no. ${port}`);
+  console.log(`Server is up on port no. ${port
+}`);
 });
 
 // port no. assigment ends here
